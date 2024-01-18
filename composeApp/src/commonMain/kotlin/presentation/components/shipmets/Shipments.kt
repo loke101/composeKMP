@@ -1,17 +1,11 @@
-package com.rider.shipatpl
+package presentation.components.shipmets
 
-import App
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -23,25 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.painterResource
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class Shipments {
 
-        setContent {
-            App()
-        }
-    }
 }
 
-@Preview
 @Composable
-fun AppAndroidPreview() {
-    ShipmentListContent()
+fun ShipmentListMain() {
+
 }
 
 @Composable
@@ -50,16 +36,15 @@ fun ShipmentListContent() {
         Card(
             elevation = 10.dp,
             shape = RoundedCornerShape(10.dp),
-            backgroundColor = Color.White,
-            modifier = Modifier.fillMaxWidth().padding(top = 10.dp, end = 10.dp, start = 10.dp)
+            backgroundColor = Color.White
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(9.dp)
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth().padding(10.dp)
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -88,24 +73,12 @@ fun ShipmentListContent() {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text("Change Status")
-                        Image(
-                            painterResource(MR.images.editor_1), "",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier.size(20.dp)
-                        )
+                        Image(painterResource(MR.images.editor_1), "")
                     }
                 }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Image(
-                        painterResource(MR.images.file_awb_2),
-                        "",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.size(20.dp)
-                    )
+                Row {
+                    Image(painterResource(MR.images.file_awb_2), "")
                     Text("CC001064646")
-
                 }
 
             }
@@ -114,3 +87,4 @@ fun ShipmentListContent() {
     }
 
 }
+

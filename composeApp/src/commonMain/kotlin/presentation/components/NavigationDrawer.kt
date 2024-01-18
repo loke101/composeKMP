@@ -1,6 +1,5 @@
-package Presentation.components
+package presentation.components
 
-import Presentation.components.menu.MenuItems
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,8 +18,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.icerockdev.library.MR
 import dev.icerock.moko.resources.compose.colorResource
 import dev.icerock.moko.resources.compose.painterResource
+import presentation.components.menu.MenuItems
 
 @Composable
 fun DrawerHeader() {
@@ -65,15 +63,20 @@ fun DrawerHeader() {
         )
     }
 }
+
 @Composable
 fun DrawerBody(
     items: List<MenuItems>,
     modifier: Modifier = Modifier,
-    itemTextStyle: TextStyle = TextStyle(fontSize = 13.sp, fontFamily = FontFamily.SansSerif, color = Color.DarkGray),
-    onItemClick: (MenuItems) -> Unit
+    itemTextStyle: TextStyle = TextStyle(
+        fontSize = 13.sp,
+        fontFamily = FontFamily.SansSerif,
+        color = Color.DarkGray
+    ),
+    onItemClick: (MenuItems) -> Unit,
 ) {
     LazyColumn(modifier) {
-        items(items,key = {it.id}) { item ->
+        items(items, key = { it.id }) { item ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier

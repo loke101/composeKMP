@@ -1,25 +1,10 @@
-package Presentation.Home
+package presentation.Home
 
 
-import Presentation.components.DrawerBody
-import Presentation.components.DrawerHeader
-import Presentation.components.HomeBottomContent
-import Presentation.components.HomeBoxContent
-import Presentation.components.HomeTopContent
-import Presentation.components.ShipmentBoxScreen
-import Presentation.components.TopBar
-import Presentation.components.menu.MenuItems
-import Presentation.components.menu.getDrawerMenuItems
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -29,20 +14,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
-import androidx.compose.material.DrawerState
-import androidx.compose.material.DrawerValue
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -50,22 +27,25 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import com.icerockdev.library.MR
-import com.icerockdev.library.MR.colors.notAttemeptedStartColor
-import com.icerockdev.library.MR.colors.undeliveredStartColor
 import dev.icerock.moko.resources.compose.colorResource
 import dev.icerock.moko.resources.compose.painterResource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import presentation.components.DrawerBody
+import presentation.components.DrawerHeader
+import presentation.components.HomeBottomContent
+import presentation.components.HomeBoxContent
+import presentation.components.HomeTopContent
+import presentation.components.TopBar
+import presentation.components.menu.MenuItems
+import presentation.components.menu.getDrawerMenuItems
 
-class HomeScreen :Screen{
+class HomeScreen : Screen {
     @Composable
     override fun Content() {
 
@@ -73,7 +53,6 @@ class HomeScreen :Screen{
     }
 
 }
-
 
 
 @Composable
@@ -85,7 +64,7 @@ fun HomeMainScreen() {
 
 @Composable
 private fun HomeScreenContent(
-    drawerItems: SnapshotStateList<MenuItems>
+    drawerItems: SnapshotStateList<MenuItems>,
 ) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -117,10 +96,10 @@ private fun HomeScreenContent(
                 }
 
             }
-             },
+        },
         drawerContent = {
             DrawerHeader()
-            DrawerBody(items = (drawerItems), modifier = Modifier.width(290.dp) ,onItemClick = {})
+            DrawerBody(items = (drawerItems), modifier = Modifier.width(290.dp), onItemClick = {})
         }
 
     ) {
@@ -129,10 +108,11 @@ private fun HomeScreenContent(
                 .verticalScroll(rememberScrollState())
                 .padding(it.calculateBottomPadding())
                 .background(colorResource(MR.colors.backColor)),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-              verticalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Card( //outer-card
+            Card(
+                //outer-card
                 shape = RoundedCornerShape(
                     topStart = 10.dp,
                     topEnd = 10.dp
@@ -140,10 +120,12 @@ private fun HomeScreenContent(
                 elevation = 10.dp,
                 backgroundColor = Color.White,
 
-            ){
-                Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center,
-                    ) {
+                ) {
                     Card(//inner-card
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
                         shape = RoundedCornerShape(18.dp),
@@ -181,7 +163,7 @@ private fun HomeScreenContent(
             }
 
 
-            }
+        }
 
     }
 }

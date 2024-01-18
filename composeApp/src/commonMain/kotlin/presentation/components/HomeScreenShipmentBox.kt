@@ -1,4 +1,4 @@
-package Presentation.components
+package presentation.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-
 @Composable
 fun ShipmentBoxScreen(
     modifier: Modifier = Modifier,
@@ -40,7 +39,7 @@ fun ShipmentBoxScreen(
         Color.White, Color.Blue
     ),
 ) {
-    Card (
+    Card(
         modifier = modifier.wrapContentHeight(),
         shape = RoundedCornerShape(10.dp),
         elevation = 5.dp,

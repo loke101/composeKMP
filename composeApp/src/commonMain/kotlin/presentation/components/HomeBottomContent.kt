@@ -1,19 +1,8 @@
-package Presentation.components
+package presentation.components
 
-import androidx.compose.foundation.horizontalScroll
-
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,13 +13,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -67,7 +60,7 @@ fun HomeBottomContent() {
             )
             DashCashScreen(
                 amount = "0",
-                heading ="Today\\'s cash due for deposit",
+                heading = "Today\\'s cash due for deposit",
                 amountColor = Color.White
             )
             DashCashScreen(
@@ -82,10 +75,11 @@ fun HomeBottomContent() {
             onClick = {},
             amountHeading = "₹ $200",
 
-        )
+            )
     }
 
 }
+
 @Composable
 fun AmountContent(
     amountHeading: String? = "",
@@ -117,14 +111,16 @@ fun AmountContent(
                 text = amountText.toString(),
                 modifier = Modifier.padding(start = 3.dp),
                 color = colorResource(MR.colors.cardViewBack),
-                textDecoration= TextDecoration.Underline ,
+                textDecoration = TextDecoration.Underline,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.W400,
                 overflow = TextOverflow.Ellipsis,
                 fontFamily = FontFamily.SansSerif
             )
-            Row(verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
                 if (amountColor != null) {
                     Text(
                         text = amountHeading.toString(),
@@ -150,11 +146,10 @@ fun AmountContent(
 }
 
 
-
 @Composable
 fun DashCashScreen(
-    amount:String,
-    heading:String,
+    amount: String,
+    heading: String,
     amountColor: Color,
 ) {
     val modifiedHeading = addLineBreaks(heading, 3)

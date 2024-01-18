@@ -1,19 +1,15 @@
-package Presentation.components.menu
+package presentation.components.menu
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import com.icerockdev.library.MR
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
 data class MenuItems(
     val id: String,
     val title: String,
     val contentDescription: String,
-    val icon: Painter
+    val icon: Painter,
 )
 
 

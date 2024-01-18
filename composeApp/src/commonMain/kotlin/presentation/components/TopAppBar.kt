@@ -1,4 +1,4 @@
-package Presentation.components
+package presentation.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
@@ -15,14 +15,15 @@ import dev.icerock.moko.resources.compose.colorResource
 
 @Composable
 fun TopBar(
-    onNavigationIconClick: () -> Unit
+    onNavigationIconClick: () -> Unit,
 ) {
-    androidx.compose.material.TopAppBar(title = { Text("Dependo") },
+    androidx.compose.material.TopAppBar(
+        title = { Text("Dependo") },
         backgroundColor = colorResource(MR.colors.backColor),
         navigationIcon = {
             IconButton(
                 modifier = Modifier.size(50.dp),
-                onClick = {onNavigationIconClick.invoke()}) {
+                onClick = { onNavigationIconClick.invoke() }) {
                 Icon(
                     Icons.Rounded.Menu,
                     contentDescription = "",

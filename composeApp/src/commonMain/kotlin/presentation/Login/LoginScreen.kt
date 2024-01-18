@@ -1,16 +1,11 @@
-package Presentation.Login
+package presentation.Login
 
-import Presentation.Home.HomeScreen
-import Presentation.components.VerifyOtpDialogMain
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-
 import androidx.compose.foundation.layout.Column
-
 import androidx.compose.foundation.layout.Row
-
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,7 +17,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
@@ -51,8 +45,10 @@ import dev.icerock.moko.resources.compose.colorResource
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import presentation.Home.HomeScreen
+import presentation.components.VerifyOtpDialogMain
 
-class LoginScreen :Screen{
+class LoginScreen : Screen {
     @Composable
     override fun Content() {
         val localNavigator = LocalNavigator.currentOrThrow
@@ -63,13 +59,13 @@ class LoginScreen :Screen{
 
 
 @Composable
-fun LoginScreenMain(localNavigator: Navigator){
+fun LoginScreenMain(localNavigator: Navigator) {
     val openDialog = remember { mutableStateOf(false) }
-    Scaffold(Modifier.fillMaxSize()){
-        LoginScreenContent(onSendOtp = {openDialog.value=true},
+    Scaffold(Modifier.fillMaxSize()) {
+        LoginScreenContent(onSendOtp = { openDialog.value = true },
             openDialog = openDialog.value,
-            onDismiss = {openDialog.value = false},
-            onOkClicked={localNavigator.push(HomeScreen())}
+            onDismiss = { openDialog.value = false },
+            onOkClicked = { localNavigator.push(HomeScreen()) }
         )
 
     }
@@ -78,7 +74,12 @@ fun LoginScreenMain(localNavigator: Navigator){
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun LoginScreenContent(onSendOtp: () -> Unit, openDialog:Boolean,onDismiss:()->Unit,onOkClicked:()->Unit) {
+private fun LoginScreenContent(
+    onSendOtp: () -> Unit,
+    openDialog: Boolean,
+    onDismiss: () -> Unit,
+    onOkClicked: () -> Unit,
+) {
     Column(
         Modifier
             .background(colorResource(MR.colors.backColor))
@@ -139,8 +140,7 @@ private fun LoginScreenContent(onSendOtp: () -> Unit, openDialog:Boolean,onDismi
                 )
                 Column(
                     Modifier
-                        .padding(top = 75.dp, start = 10.dp).
-                        fillMaxWidth(),
+                        .padding(top = 75.dp, start = 10.dp).fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(25.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -203,7 +203,10 @@ private fun LoginScreenContent(onSendOtp: () -> Unit, openDialog:Boolean,onDismi
         }
         when {
             openDialog -> {
-                VerifyOtpDialogMain(onOk = {onOkClicked.invoke()}, isDialogVisible =openDialog , onDismiss = {onDismiss.invoke()})
+                VerifyOtpDialogMain(
+                    onOk = { onOkClicked.invoke() },
+                    isDialogVisible = openDialog,
+                    onDismiss = { onDismiss.invoke() })
             }
         }
 
